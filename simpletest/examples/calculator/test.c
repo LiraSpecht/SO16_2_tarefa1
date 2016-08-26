@@ -1,7 +1,12 @@
 #include "../../simpletest.h"
 #include "calculator.h"
-// Inlcuindo pthread no Visual Studio: https://linqtolinq.wordpress.com/2012/04/24/setting-up-pthreads-in-windows-under-visual-studio/
-#include "../trab1SO/pthread-win32/pthread.h"
+// Inlcuindo pthread no Visual Studio: http://web.cs.du.edu/~sturtevant/w13-sys/InstallingpthreadsforVisualStudio.pdf
+#define HAVE_STRUCT_TIMESPEC //REMOVE O ERRO --> "pthread.h(320): error C2011: 'timespec': 'struct' type redefinition"
+#include <pthread.h>
+
+#define MAX_CASES 10
+
+int GLOBALVAR;
 
 void test_sum(){
 
@@ -32,26 +37,32 @@ void test_sub() {
 	isEqual(sum(0, 0), 0);
 }
 
+void *incGlobal(void *arg) {
+	GLOBALVAR = GLOBALVAR + 1;
+}
+
 void *etapa3(void *arg) {
-	int x = 0;
 	DESCRIBE("SOMA X");
 	WHEN("I execute sum");
 	IF("use numbers 0 and 1");
 	THEN("the result should be 1");
-	isEqual(sum(x, 1), 1);
+	isEqual(sum(GLOBALVAR, 1), 1);
 	return NULL;
 }
 
-/*void doTheParallel() {
-	pthread_t threads;
-	pthread_create(&(threads), NULL, etapa3, NULL);
-	pthread_join(threads, NULL);
-}*/
-
-void *thread_func(void *arg) {
-	return 0;
+void doTheParallel() {
+	//Cria unidades de paralelismos
+	pthread_t threads[MAX_CASES];
+	for (int i = 0; i < MAX_CASES; i++) {
+		//Cria threads e executa-as
+		pthread_create(&(threads[i]), NULL, incGlobal, NULL);
+	}
+	for (int i = 0; i < MAX_CASES; i++) {
+		//Aguarda o fim de cada thread
+		pthread_join(threads[i], NULL);
+	}
+	printf("NO FINAL SAIU %i\n", GLOBALVAR);
 }
-
 
 
 int main () {
@@ -64,11 +75,10 @@ int main () {
 	//4. Criar casos de teste para a função usando simpletest. 
 	//5. Submeter um único arquivo de texto contendo o código com a função e os casos de teste.
 
-	//paralelismo();
+	GLOBALVAR = 0; // Setando o valor inicial da variável global
 
-	pthread_t threads;
-	pthread_create(&threads, NULL, thread_func, NULL);
-	pthread_join(threads, NULL);
+	for(int i = 0; i < MAX_CASES; i++)
+		doTheParallel();
 
 	system("PAUSE");
 }

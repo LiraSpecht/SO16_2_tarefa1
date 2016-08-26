@@ -1,4 +1,4 @@
 ﻿  test.c
-test.obj : error LNK2019: unresolved external symbol __imp__pthread_create referenced in function _main
-test.obj : error LNK2019: unresolved external symbol __imp__pthread_join referenced in function _main
-C:\Users\Alex\Documents\GitHub\SO16_2_tarefa1\simpletest\examples\trab1SO\Debug\trab1SO.exe : fatal error LNK1120: 2 unresolved externals
+c:\users\alex\documents\github\so16_2_tarefa1\simpletest\examples\calculator\test.c(42): warning C4716: 'incGlobal': must return a value
+  trab1SO.vcxproj -> C:\Users\Alex\Documents\GitHub\SO16_2_tarefa1\simpletest\examples\trab1SO\Debug\trab1SO.exe
+  trab1SO.vcxproj -> C:\Users\Alex\Documents\GitHub\SO16_2_tarefa1\simpletest\examples\trab1SO\Debug\trab1SO.pdb (Full PDB)

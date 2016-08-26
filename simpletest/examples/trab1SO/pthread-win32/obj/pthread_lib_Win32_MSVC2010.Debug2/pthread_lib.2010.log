@@ -1,8 +1,0 @@
-﻿  pthread.c
-c:\users\alex\documents\github\so16_2_tarefa1\simpletest\examples\trab1so\pthread-win32\ptw32_threadStart.c(119): warning C4619: #pragma warning: there is no warning number '4748'
-c:\users\alex\documents\github\so16_2_tarefa1\simpletest\examples\trab1so\pthread-win32\pthread_cond_wait.c(444): warning C4127: conditional expression is constant
-c:\users\alex\documents\github\so16_2_tarefa1\simpletest\examples\trab1so\pthread-win32\pthread_mutex_timedlock.c(263): warning C4456: declaration of 'self' hides previous local declaration
-  c:\users\alex\documents\github\so16_2_tarefa1\simpletest\examples\trab1so\pthread-win32\pthread_mutex_timedlock.c(220): note: see declaration of 'self'
-c:\users\alex\documents\github\so16_2_tarefa1\simpletest\examples\trab1so\pthread-win32\pthread_delay_np.c(124): warning C4296: '>': expression is always false
-version.rc(52): error RC2188: C:\Users\Alex\Documents\GitHub\SO16_2_tarefa1\simpletest\examples\trab1SO\pthread-win32\obj\pthread_lib_Win32_MSVC2010.Debug\RCa01852(406) : fatal error RC1116: RC terminating after preprocessor errors
-  
